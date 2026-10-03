@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100svh;
+  color: #18352e;
+  background-color: #efeee5;
+  background-image:
+    linear-gradient(rgb(24 53 46 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(24 53 46 / 5%) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 32px;
+}
+
+.format-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #18352e;
+  background: #efeee5;
+}
+
+.format-toggle button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  background: transparent;
+  color: #18352e;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.format-toggle button[aria-pressed="true"] {
+  background: #18352e;
+  color: #d9fb72;
+}
+
+.format-toggle button:focus-visible {
+  outline: 3px solid #ef7056;
+  outline-offset: 3px;
+}
+
+#clock {
+  position: relative;
+  width: min(100%, 940px);
+  padding: 88px 52px 76px;
+  border: 1px solid #18352e;
+  background: #18352e;
+  box-shadow: 12px 12px 0 #ef7056;
+  color: #d9fb72;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 112px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+#clock::before,
+#clock::after {
+  position: absolute;
+  left: 28px;
+  color: #efeee5;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+#clock::before {
+  top: 26px;
+  content: "LOCAL TIME";
+}
+
+#clock::after {
+  bottom: 24px;
+  content: "24-HOUR FORMAT  /  LIVE";
+  color: #d9fb72;
+}
+
+#clock[data-format="12"] {
+  font-size: 82px;
+}
+
+#clock[data-format="12"]::after {
+  content: "12-HOUR FORMAT  /  LIVE";
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 24px;
+  }
+
+  .container {
+    gap: 24px;
+  }
+
+  #clock {
+    padding: 72px 16px 64px;
+    box-shadow: 7px 7px 0 #ef7056;
+    font-size: 44px;
+  }
+
+  #clock[data-format="12"] {
+    font-size: 38px;
+  }
+
+  #clock::before,
+  #clock::after {
+    left: 18px;
+    font-size: 10px;
+  }
+
+  #clock::before {
+    top: 22px;
+  }
+
+  #clock::after {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  #clock {
+    font-size: 36px;
+  }
+
+  #clock[data-format="12"] {
+    font-size: 28px;
+  }
+}

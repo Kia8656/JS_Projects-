@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "version": "1.5",
+  "name": "Link Nest",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "link.png"
+  },
+  "permissions": [
+    "tabs"
+  ]
+}

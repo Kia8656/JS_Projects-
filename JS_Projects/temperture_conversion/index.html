@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperture Conversion</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <p class="eyebrow">Smart utility</p>
+        <h1>Temperature Converter</h1>
+
+        <label for="input-el" class="label">Enter temperature</label>
+        <input id="input-el" type="text" placeholder="e.g. 25" />
+
+        <div class="options">
+          <label class="option-row">
+            <input id="celsius" type="radio" name="unit" />
+            <span>Celsius → Fahrenheit</span>
+          </label>
+
+          <label class="option-row">
+            <input id="fahrenheit" type="radio" name="unit" />
+            <span>Fahrenheit → Celsius</span>
+          </label>
+        </div>
+
+        <button id="submit-btn">Convert</button>
+        <div class="result-display" id="result-display"></div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

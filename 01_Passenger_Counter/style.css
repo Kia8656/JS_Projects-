@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-image: url(/01_Passenger_Counter/Images/bg.avif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+
+body h1 {
+  font-family: 100px;
+  margin-bottom: 40px;
+}
+
+body h2 {
+  font-size: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body button {
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  margin-top: 5px;
+  background: darkred;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body #increment-btn:hover {
+  background: rgb(185, 4, 4);
+
+}
+
+body #increment-btn:active {
+  background: rgb(70, 0, 0);
+}
+
+body #save-btn {
+  background: green;
+  margin-top: 20px;
+
+}
+
+
+body #save-btn:hover {
+  background: rgb(4, 175, 4)
+}
+
+body #save-btn:active {
+  background: rgb(0, 59, 0);
+}
+
+
+body #reset-btn {
+  margin-top: 20px;
+  background: black;
+
+}
+
+
+
+body #reset-btn:hover {
+  background: rgb(32, 32, 32);
+}
+
+body #reset-btn:active {
+  background: rgb(0, 0, 0);
+}
+
+
+body #save-el {
+  width: min(90%, 420px);
+  min-height: 50px;
+  border-radius: 10px;
+  margin-top: 50px;
+  padding: 14px 18px;
+  color: #222;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid white;
+  background: whitesmoke;
+}
+
+
+.dash {
+  color: black;
+  font-weight: 900;
+  margin: 0 3px;
+  font-size: 2rem;
+  line-height: 1;
+  vertical-align: middle;
+  position: relative;
+  top: -0.15em;
+}

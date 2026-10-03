@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- JetBrains Mono for digits, Space Grotesk for button/UI labels -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="calculator">
+
+    <!-- Recessed display panel: shows the live equation and the result -->
+    <section class="display" aria-label="Calculator display">
+      <div class="display__equation">
+        <input type="number" id="num1-el" class="display__input" value="12" aria-label="First number">
+        <span id="operator-el" class="display__operator" aria-hidden="true">+</span>
+        <input type="number" id="num2-el" class="display__input" value="8" aria-label="Second number">
+      </div>
+
+      <div class="display__result">
+        <span class="display__result-label">Result</span>
+        <span id="sum-el">20</span>
+      </div>
+    </section>
+
+    <!-- Key grid: Clear on its own row, then the four operations -->
+    <div class="keys">
+      <button type="button" class="key key--clear" id="clear-btn">C</button>
+
+      <div class="keys__row">
+        <button type="button" class="key key--op" id="add-btn" data-op="+">+</button>
+        <button type="button" class="key key--op" id="subtract-btn" data-op="−">−</button>
+        <button type="button" class="key key--op" id="multiply-btn" data-op="×">×</button>
+        <button type="button" class="key key--op" id="divide-btn" data-op="÷">÷</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

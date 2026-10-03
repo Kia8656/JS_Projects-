@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 0 20px;
+  color: #263438;
+  background-color: #e7edef;
+  background-image:
+    linear-gradient(rgb(38 52 56 / 6%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(38 52 56 / 6%) 1px, transparent 1px);
+  background-size: 36px 36px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+}
+
+.container {
+  width: min(100%, 760px);
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #263438;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 500;
+}
+
+h1::before {
+  width: 12px;
+  height: 12px;
+  background: #28c8d0;
+  content: "";
+}
+
+#display {
+  position: relative;
+  width: 100%;
+  margin: 36px 0 30px;
+  padding: 76px 24px 66px;
+  border: 1px solid #101719;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #344145, #20292d 68%);
+  box-shadow:
+    0 8px 0 #11191c,
+    0 13px 0 #28c8d0,
+    inset 0 1px 0 rgb(255 255 255 / 20%);
+  color: #83edf0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 76px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-align: center;
+  transform: perspective(1000px) rotateX(2deg);
+  transform-origin: center bottom;
+  white-space: nowrap;
+}
+
+#display::before,
+#display::after {
+  position: absolute;
+  left: 24px;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+#display::before {
+  top: 22px;
+  color: #bdcccd;
+  content: "ELAPSED TIME";
+}
+
+#display::after {
+  bottom: 20px;
+  color: #83edf0;
+  content: "HOURS  /  MINUTES  /  SECONDS  /  1/100";
+  text-align: right;
+}
+
+#controls {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+#controls button {
+  min-height: 58px;
+  border: 1px solid #263438;
+  border-radius: 4px;
+  background: var(--button-face);
+  box-shadow:
+    0 6px 0 var(--button-edge),
+    0 10px 14px rgb(22 38 41 / 16%),
+    inset 0 1px 0 rgb(255 255 255 / 58%);
+  color: #20292d;
+  font:
+    700 13px "Trebuchet MS",
+    sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease;
+}
+
+#start-btn {
+  --button-face: #79e3e4;
+  --button-edge: #238f96;
+}
+
+#stop-btn {
+  --button-face: #f2a267;
+  --button-edge: #b86535;
+}
+
+#reset-btn {
+  --button-face: #f4f5f0;
+  --button-edge: #a2b2b4;
+}
+
+#controls button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 0 var(--button-edge),
+    0 13px 17px rgb(22 38 41 / 18%),
+    inset 0 1px 0 rgb(255 255 255 / 65%);
+}
+
+#controls button:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 var(--button-edge),
+    inset 0 1px 2px rgb(22 38 41 / 12%);
+}
+
+#controls button:focus-visible {
+  outline: 3px solid #263438;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  #display {
+    padding: 68px 12px 62px;
+    box-shadow:
+      0 6px 0 #11191c,
+      0 10px 0 #28c8d0,
+      inset 0 1px 0 rgb(255 255 255 / 20%);
+    font-size: 46px;
+  }
+
+  #display::before,
+  #display::after {
+    left: 16px;
+    font-size: 9px;
+  }
+
+  #display::before {
+    top: 22px;
+  }
+
+  #display::after {
+    right: 16px;
+    left: auto;
+    font-size: 8px;
+  }
+
+  #controls {
+    gap: 8px;
+  }
+
+  #controls button {
+    min-height: 54px;
+  }
+}
+
+@media (max-width: 380px) {
+  #display {
+    font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #controls button {
+    transition: none;
+  }
+}

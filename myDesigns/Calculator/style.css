@@ -1,0 +1,234 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+:root {
+  /* Color */
+  --color-bg: #14100d;
+  /* page backdrop */
+  --color-body: #211c17;
+  /* calculator case */
+  --color-body-trim: #171310;
+  /* darker inset edge of the case */
+  --color-display-bg: #0d0a07;
+  /* recessed display panel */
+  --color-display-glow: #f5a623;
+  /* amber digit glow */
+  --color-display-glow-dim: #a86e1e;
+  /* dimmer amber for secondary text */
+  --color-key-bg: #332c24;
+  /* number input / clear key */
+  --color-key-bg-hover: #3d352b;
+  --color-key-text: #ede3d6;
+  --color-op-bg: #3f6e63;
+  /* operator keys */
+  --color-op-bg-hover: #4a8175;
+  --color-op-text: #f3f7f5;
+  --color-clear-bg: #4a332c;
+  /* clear key, warm and muted */
+  --color-clear-bg-hover: #5a3f36;
+
+  /* Type */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+
+  /* Spacing / sizing, in rem so it scales with the user's base font size */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --radius-case: 1.5rem;
+  --radius-panel: 0.75rem;
+  --radius-key: 0.85rem;
+}
+
+/* ==========================================================================
+   Reset / base
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  font-family: var(--font-sans);
+  padding: var(--space-lg);
+}
+
+/* ==========================================================================
+   Calculator case
+   ========================================================================== */
+.calculator {
+  width: 100%;
+  max-width: 22rem;
+  background-color: var(--color-body);
+  border: 1px solid var(--color-body-trim);
+  border-radius: var(--radius-case);
+  padding: var(--space-lg);
+  /* soft outer lift + inner edge to read as a physical case, not a card */
+  box-shadow:
+    0 1.5rem 3rem rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* ==========================================================================
+   Display panel
+   ========================================================================== */
+.display {
+  background-color: var(--color-display-bg);
+  border-radius: var(--radius-panel);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  /* recessed look: dark inner shadow at the top edge */
+  box-shadow: inset 0 0.25rem 0.75rem rgba(0, 0, 0, 0.6);
+}
+
+.display__equation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.display__input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-display-glow);
+  text-align: center;
+  padding: var(--space-xs) 0;
+  /* subtle glow to sell the "lit LED digit" feel */
+  text-shadow: 0 0 0.5rem rgba(245, 166, 35, 0.35);
+}
+
+/* Remove the native number-input spinner arrows so the digits stay clean */
+.display__input::-webkit-outer-spin-button,
+.display__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.display__input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.display__input:focus {
+  outline: none;
+  border-bottom-color: var(--color-display-glow);
+}
+
+.display__operator {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--color-display-glow-dim);
+  width: 1.5rem;
+  text-align: center;
+}
+
+.display__result {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(245, 166, 35, 0.12);
+}
+
+.display__result-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-display-glow-dim);
+}
+
+#sum-el {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-display-glow);
+  text-shadow: 0 0 0.75rem rgba(245, 166, 35, 0.45);
+}
+
+/* ==========================================================================
+   Keys
+   ========================================================================== */
+.keys {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.keys__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+.key {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: var(--radius-key);
+  padding: var(--space-sm) 0;
+  cursor: pointer;
+  transition: transform 0.08s ease, background-color 0.15s ease;
+}
+
+.key:active {
+  transform: translateY(0.1rem);
+}
+
+.key--clear {
+  width: 100%;
+  background-color: var(--color-clear-bg);
+  color: var(--color-key-text);
+  letter-spacing: 0.05em;
+}
+
+.key--clear:hover {
+  background-color: var(--color-clear-bg-hover);
+}
+
+.key--op {
+  background-color: var(--color-op-bg);
+  color: var(--color-op-text);
+}
+
+.key--op:hover {
+  background-color: var(--color-op-bg-hover);
+}
+
+/* Visible keyboard focus, distinct from hover */
+.key:focus-visible {
+  outline: 2px solid var(--color-display-glow);
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Small screens
+   ========================================================================== */
+@media (max-width: 22.5rem) {
+  .calculator {
+    padding: var(--space-md);
+  }
+
+  #sum-el {
+    font-size: 1.6rem;
+  }
+}

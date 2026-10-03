@@ -1,0 +1,315 @@
+:root {
+  --grad-start: #2C5FC4;
+  --grad-end: #6DA9E4;
+  --text-color: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.72);
+  --glass: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 48px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--grad-start), var(--grad-end));
+  transition: background 1.1s ease;
+  color: var(--text-color);
+}
+
+/* ---------- Search ---------- */
+
+.weatherForm {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 999px;
+  padding: 12px 20px;
+}
+
+.searchIcon {
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  transform: scaleX(-1);
+}
+
+.cityInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.cityInput::placeholder {
+  color: var(--text-dim);
+}
+
+.hint {
+  position: relative;
+  z-index: 3;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--text-dim);
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 340px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  animation: rise 0.5s ease;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cityDisplay {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0 0 4px;
+}
+
+.tempRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  line-height: 1;
+}
+
+.tempDisplay {
+  font-size: 8rem;
+  font-weight: 100;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.weatherEmoji {
+  font-size: 3.2rem;
+  margin: 6px 0 0;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+.descDisplay {
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 4px 0 28px;
+  color: var(--text-dim);
+}
+
+.chipsRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.chip {
+  flex: 1;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.chipLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0 0 6px;
+}
+
+.chipValue {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ---------- Error ---------- */
+
+.errorDisplay {
+  position: relative;
+  z-index: 3;
+  margin-top: 60px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-color);
+  max-width: 280px;
+}
+
+/* ---------- Particles ---------- */
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drop {
+  position: absolute;
+  top: -40px;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.55));
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(115vh);
+  }
+}
+
+.flake {
+  position: absolute;
+  top: -20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  animation-name: drift-down;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drift-down {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(30px, 115vh);
+  }
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation-name: drift-across;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drift-across {
+  from {
+    transform: translateX(-30vw);
+  }
+
+  to {
+    transform: translateX(130vw);
+  }
+}
+
+.sunGlow {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 244, 214, 0.55), transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .drop,
+  .flake,
+  .cloud,
+  .sunGlow,
+  .star,
+  .card {
+    animation: none !important;
+  }
+}
